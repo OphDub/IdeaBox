@@ -1,7 +1,27 @@
-/*Element Styling*/
+/*IdeaBox User Input Styling START*/
+/*Element Level Styling*/
+header {
+	background-color: #E5F3F2;
+	font-family: Roboto Slab;
+}
+	flex-direction: column;
+	
 
+/*ID Level Styling*/
+#ideabox-header {
+	font-family: Roboto Slab;
+	font-weight: 700;
+	font-size: 100px;
+	color: #6D6E71;
+}
 
-/*ID-Styling*/
+/*Class Level Styling*/
+.ideabox-title {
+	color: #00A79D;
+}
 
+.user-input {
 
-/*Class Styling*/
+}
+
+/*IdeaBox User Input Styling END*/
