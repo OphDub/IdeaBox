@@ -2,11 +2,32 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>IdeaBox</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
+<!-- IdeaBox User Input -->
+<header class="header-wrapper">
+	<h1>ideabox</h1>
+	<form action="submit">
+		<input id="idea-title" class="title-input" type="text" placeholder="Title">
+		<input id="idea-body" class="body-input" type="text" placeholder="Body">
+		<button id="idea-save" class="save-button">save</button>
+	</form>
+</header>
+<!-- Idea Display Wrapper -->
 <body>
-	
+	<input id="idea-search" class="search-input" type="text" placeholder="Search">
+	<section class="idea-wrapper">
+		<article id="" class="">
+			<h2 id="idea-title-text" class="">Idea Title</h2>
+			<p id="idea-body-text" class="">
+				Idea text body
+			</p>
+			<p id="" class="">
+				quality: <span id="idea-quality">swill</span>
+			</p>
+		</article>
+	</section>
 </body>
 <script src="scripts.js"></script>
 </html>
