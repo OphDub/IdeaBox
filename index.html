@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>IdeaBox</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
+<body>
 <!-- IdeaBox User Input -->
-<header class="header-wrapper">
+<header>
 	<h1>ideabox</h1>
 	<form action="submit">
 		<input id="idea-title" class="title-input" type="text" placeholder="Title">
-		<input id="idea-body" class="body-input" type="text" placeholder="Body">
-		<button id="idea-save" class="save-button">save</button>
+		<input id="idea-body" class="input-body" type="text" placeholder="Body">
+		<button type="button" id="idea-save" class="save-button">save</button>
 	</form>
 </header>
 <!-- Idea Display Wrapper -->
-<body>
-	<input id="idea-search" class="search-input" type="text" placeholder="Search">
 	<section class="idea-wrapper">
+		<input id="idea-search" class="search-input" type="text" placeholder="Search">
 <!-- 		Idea Card Placeholder Mock -->
 		<article class="idea-card">
 			<h2 class="idea-title-text">Idea Title</h2>
@@ -30,5 +31,6 @@
 		</article>
 	</section>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="scripts.js"></script>
 </html>
