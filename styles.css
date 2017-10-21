@@ -1,5 +1,36 @@
-/*IdeaBox User Input Styling*/
-/*Element Level Styling*/
+/*Global Styles */
+* {
+  box-sizing: content-box;
+}
+
+html{
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+article {
+	width: 90%;
+}
+
+h2 {
+	font-family: Roboto Slab;
+}
+
+p {
+	font-family: Open Sans;
+}
+
+/*Header Styles*/
+
 header {
 	background-color: #E5F3F2;
 	font-family: Roboto Slab;
@@ -9,7 +40,6 @@ header {
 	width: 100%;
 }
 
-/*ID Level Styling*/
 #ideabox-header {
 	color: #6D6E71;
 	font-family: Roboto Slab;
@@ -18,9 +48,8 @@ header {
 	margin: 3% auto 0 auto;
 }
 
+/*Font-Styles*/
 
-
-/*Class Level Styling*/
 .ideabox-title {
 	color: #00A79D;
 }
@@ -49,31 +78,6 @@ header {
 	height: 2em;
 }
 
-/*IdeaBox Display Wrapper Styling*/
-/*Element Level Styling*/
-body {
-	width: 100%;
-}
-
-section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-article {
-	width: 90%;
-}
-
-h2 {
-	font-family: Roboto Slab;
-}
-
-p {
-	font-family: Open Sans;
-}
-
-/*ID Level Styling*/
 #idea-search{
 	font-family: Open Sans;
 	font-size: 3em;
@@ -83,7 +87,6 @@ p {
 	border: magenta 1.5px solid;
 }
 
-/*Class Level Styling*/
 .idea-card {
 	justify-content: center;
 	margin: 2em;
