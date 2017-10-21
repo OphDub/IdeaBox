@@ -11,15 +11,92 @@ body {
   height: 100%;
 }
 
-/*Font-Styles*/
+section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
+article {
+	width: 90%;
+}
 
+h2 {
+	font-family: Roboto Slab;
+}
 
+p {
+	font-family: Open Sans;
+}
 
 /*Header Styles*/
 
+header {
+	background-color: #E5F3F2;
+	font-family: Roboto Slab;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
 
+#ideabox-header {
+	color: #6D6E71;
+	font-family: Roboto Slab;
+	font-weight: 700;
+	font-size: 5em;
+	margin: 3% auto 0 auto;
+}
 
+/*Font-Styles*/
 
+.ideabox-title {
+	color: #00A79D;
+}
 
-/*Idea Box Styles*/
+.user-input {
+	font-family: Open Sans;
+	font-size: 3em;
+	display: block;
+	padding: 0;
+	margin: 1em;
+	width: 90%;
+}
+
+.title-input {
+	border: magenta 1.5px solid;
+}
+
+.body-input {
+	height: 5em;
+	border: magenta 1.5px solid;
+}
+
+.save-button {
+	background-color: #00A79D;
+	color: #FFFFFF;
+	height: 2em;
+}
+
+#idea-search{
+	font-family: Open Sans;
+	font-size: 3em;
+	margin: 1em;
+	padding: 5px;
+	width: 90%;
+	border: magenta 1.5px solid;
+}
+
+.idea-card {
+	justify-content: center;
+	margin: 2em;
+}
+
+.idea-quality {
+	display: inline;
+	justify-content: center
+}
+
+.voting-buttons {
+	display: inline;
+}
