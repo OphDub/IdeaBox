@@ -9,6 +9,7 @@ html{
 
 body {
   height: 100%;
+  font-size: 16px;
 }
 
 section {
@@ -17,86 +18,107 @@ section {
 	justify-content: center;
 }
 
-article {
-	width: 90%;
-}
 
-h2 {
-	font-family: Roboto Slab;
+/*Global Styles */
+
+/*Font-Styles*/
+body {
+  font-family: Roboto Slab;
 }
 
 p {
-	font-family: Open Sans;
+  font-family: Open Sans;
+}
+
+header h1{
+  font-size: 1.5em;
+}
+
+#ideabox-header {
+  font-weight: 700;
+  font-size: 5em;
+}
+
+.title-input,
+.input-body,
+.save-button {
+  font-size: 1em;
+}
+
+.user-input,
+#idea-search  {
+  font-family: Open Sans;
+  font-size: 3em;
 }
 
 /*Header Styles*/
 
 header {
-	background-color: #E5F3F2;
-	font-family: Roboto Slab;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	width: 100%;
+	background-color: #E2F5F5;
+  padding: 12px 15px 20px 15px;
 }
+
+header h1{
+  color: #6D6E71;
+  margin: 0 auto 15px auto;
+  text-align: center;
+}
+
+
+h1 span {
+  color: #00A79D;
+}
+
+
 
 #ideabox-header {
 	color: #6D6E71;
-	font-family: Roboto Slab;
-	font-weight: 700;
-	font-size: 5em;
-	margin: 3% auto 0 auto;
+	
 }
 
-/*Font-Styles*/
+/*Header Styles*/
+
 
 .ideabox-title {
 	color: #00A79D;
 }
 
-.user-input {
-	font-family: Open Sans;
-	font-size: 3em;
-	display: block;
-	padding: 0;
-	margin: 1em;
-	width: 90%;
-}
-
 .title-input {
-	border: magenta 1.5px solid;
+	display: block;
+	padding: 3px 0 2px 6px;
+  width: 94%;
+  margin-bottom: 11px;
 }
 
-.body-input {
-	height: 5em;
-	border: magenta 1.5px solid;
+.input-body {
+  display: block;
+  height: 64px;
+  padding: 4px 0 0 6px;
+  width: 95%;
+  resize: none;
+  margin-bottom: 13px;
 }
 
 .save-button {
 	background-color: #00A79D;
 	color: #FFFFFF;
-	height: 2em;
+  border: none;
+  width: 94%;
+  margin: auto;
+  padding: 5px;
 }
 
-#idea-search{
-	font-family: Open Sans;
-	font-size: 3em;
-	margin: 1em;
+#idea-search {
 	padding: 5px;
 	width: 90%;
 	border: magenta 1.5px solid;
 }
 
 .idea-card {
-	justify-content: center;
-	margin: 2em;
 }
 
 .idea-quality {
-	display: inline;
-	justify-content: center
 }
 
 .voting-buttons {
-	display: inline;
 }
