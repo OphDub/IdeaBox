@@ -2,7 +2,6 @@
 var ideaTitle = document.getElementById('idea-title-input');
 var ideaBody = document.getElementById('idea-body');
 var saveIdeaButton = document.querySelector('.save-button');
-var deleteIdea = document.querySelector('.idea-delete');
 
 //Event Listeners
 saveIdeaButton.addEventListener('click', appendIdeaCard);
@@ -20,10 +19,15 @@ function appendIdeaCard () {
 		<p class="idea-quality"> quality: <span class="idea-status">swill</span></p>`
 	ideaWrapper.prepend(ideaCard);
 	document.querySelector('form').reset();
-}
+	ideaTitle.focus();
+};
 
+//Remove Idea Card
 $(document).on('click', function(){
 	$('.idea-delete').click(function() {
 	$(this).closest('article').remove();
 	});
 });
+
+//Constructor Function - appendIdeaCard
+ 
