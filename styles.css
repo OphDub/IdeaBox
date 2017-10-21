@@ -1,19 +1,24 @@
-/*IdeaBox User Input Styling START*/
+/*IdeaBox User Input Styling*/
 /*Element Level Styling*/
 header {
 	background-color: #E5F3F2;
 	font-family: Roboto Slab;
-}
+	display: flex;
+	align-items: center;
 	flex-direction: column;
-	
+	width: 100%;
+}
 
 /*ID Level Styling*/
 #ideabox-header {
+	color: #6D6E71;
 	font-family: Roboto Slab;
 	font-weight: 700;
-	font-size: 100px;
-	color: #6D6E71;
+	font-size: 5em;
+	margin: 3% auto 0 auto;
 }
+
+
 
 /*Class Level Styling*/
 .ideabox-title {
@@ -21,7 +26,74 @@ header {
 }
 
 .user-input {
-
+	font-family: Open Sans;
+	font-size: 3em;
+	display: block;
+	padding: 0;
+	margin: 1em;
+	width: 90%;
 }
 
-/*IdeaBox User Input Styling END*/
+.title-input {
+	border: magenta 1.5px solid;
+}
+
+.body-input {
+	height: 5em;
+	border: magenta 1.5px solid;
+}
+
+.save-button {
+	background-color: #00A79D;
+	color: #FFFFFF;
+	height: 2em;
+}
+
+/*IdeaBox Display Wrapper Styling*/
+/*Element Level Styling*/
+body {
+	width: 100%;
+}
+
+section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+article {
+	width: 90%;
+}
+
+h2 {
+	font-family: Roboto Slab;
+}
+
+p {
+	font-family: Open Sans;
+}
+
+/*ID Level Styling*/
+#idea-search{
+	font-family: Open Sans;
+	font-size: 3em;
+	margin: 1em;
+	padding: 5px;
+	width: 90%;
+	border: magenta 1.5px solid;
+}
+
+/*Class Level Styling*/
+.idea-card {
+	justify-content: center;
+	margin: 2em;
+}
+
+.idea-quality {
+	display: inline;
+	justify-content: center
+}
+
+.voting-buttons {
+	display: inline;
+}
