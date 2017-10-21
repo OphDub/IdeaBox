@@ -14,7 +14,7 @@
 	<h1><span>idea</span>box</h1>
 	<form>
 		<fieldset>
-			<input id="idea-title" class="title-input" type="text" placeholder="Title">
+			<input id="idea-title-input" class="title-input" type="text" placeholder="Title">
 			<textarea id="idea-body" class="input-body" type="textarea" placeholder="Body"></textarea>
 			<button type="button" id="idea-save" class="save-button">save</button>
 		</fieldset>
@@ -22,15 +22,15 @@
 </header>
 <!-- Idea Display Wrapper -->
 	<section class="idea-wrapper">
-		<input id="idea-search" class="search-input" type="text" placeholder="Search">
+		<input type="text" id="idea-search" class="search-input" type="text" placeholder="Search">
 <!-- 		Idea Card Placeholder Mock -->
 		<article class="idea-card">
-			<h2 class="idea-title-text">Example Idea</h2>
+			<h2 class="idea-title-h2">Example Idea <button type="button" class="idea-delete"></button></h2>
 			<p class="idea-body-text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis assumenda explicabo, animi iusto. Commodi possimus illo omnis natus cupiditate quae voluptatibus ex. Consequatur nisi laboriosam, tempore sed fugiat officiis, impedit.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis assumenda explicabo
 			</p>
-			<button class="upvote voting-buttons"></button>
-			<button class="downvote voting-buttons"></button>
+			<button class="upvote voting-buttons" type="button"></button>
+			<button class="downvote voting-buttons" type="button"></button>
 			<p class="idea-quality">
 				quality: <span class="idea-status">swill</span>
 			</p>
