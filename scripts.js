@@ -29,8 +29,16 @@ function saveIdea () {
 function displayIdea(e) {
 	var retrievedIdea = localStorage.getItem(e);
 	var parsedIdea = JSON.parse(retrievedIdea);
-	console.log(parsedIdea.ideaBody);
 	appendIdeaCard(parsedIdea.ideaTitle, parsedIdea.ideaBody, parsedIdea.ideaId);
+};
+
+window.onload = function() {
+	for(var i in localStorage)
+	{
+    displayIdea(i);
+	}
+	//var parsedArray = JSON.parse(localStorage);
+	//console.log(parsedArray);
 };
 
 // function showIdea () {
