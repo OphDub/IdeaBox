@@ -12,19 +12,21 @@ function IdeaCard (ideaTitle, ideaBody) {
 	// this.ideaQuality = ideaQuality || 'swill',
 	this.ideaId = Date.now();
 };
-
+//Save Idea to localStorage
 function saveIdea () {
-	var ideaTitle = $('#idea-title-input').val();
-	var ideaBody = $('#idea-body').val();
-	var newIdea = new IdeaCard(ideaTitle, ideaBody);
-	var stringifiedIdea = JSON.stringify(newIdea);
-	localStorage.setItem(Date.now(),stringifiedIdea);
-	console.log(stringifiedIdea);
+	var $ideaTitle = $('#idea-title-input').val();
+	var $ideaBody = $('#idea-body').val();
+	var $newIdea = new IdeaCard($ideaTitle, $ideaBody);
+	var $stringifiedIdea = JSON.stringify($newIdea);
+	localStorage.setItem(Date.now(),$stringifiedIdea);
+	console.log($stringifiedIdea);
 	console.log(localStorage);
 };
 
 function showIdea () {
-	
+	var retrievedIdea = localStorage.getItem(Date.now());
+	var parsedIdea = JSON.parse(retrievedIdea);
+	console.log(parsedIdea);
 }
 
 function appendIdeaCard (ideaTitle, ideaBody) {
@@ -50,5 +52,3 @@ $(document).on('click', function(){
 	$(this).closest('article').remove();
 	});
 });
-
-//Idea to localStorage
