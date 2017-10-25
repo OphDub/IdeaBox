@@ -10,6 +10,7 @@ function IdeaCard (ideaTitle, ideaBody, ideaId) {
 	this.ideaTitle = ideaTitle,
 	this.ideaBody = ideaBody,
 	this.ideaId = ideaId;
+	this.ideaQuality = "swill";
 };
 
 //Save Idea to localStorage
@@ -55,9 +56,28 @@ function displayIdeaCard (ideaTitle, ideaBody, ideaId) {
 //Delete Idea from DOM
 $(document).on('click', function(){
 	$('.idea-delete').click(function() {
-	$(this).closest('article').remove();
+		$(this).closest('article').remove();
 	//Delete idea from localStorage
 	var $ideaToBeRemoved = $(this).closest('article').attr('id');
 	localStorage.removeItem($ideaToBeRemoved);
 	});
-});
+});	
+
+//Upvote Function
+
+$(document).on('click', upVote);
+
+function upVote () {
+	$('.upvote').click(function() {
+		var $upvotedIdea = $(this).closest('article').attr('id');
+		var $retrievedUpVotedIdea = localStorage.getItem($upvotedIdea);
+		var $parsedUpvotedIdea = JSON.parse($retrievedUpVotedIdea);
+		console.log($parsedUpvotedIdea.ideaQuality);
+	})
+
+	// if(this.$parsedUpvotedIdea['ideaQuality'] == "swill"){
+	// 	this.$parsedUpvotedIdea['ideaQuality'] == "plausible";
+	// } else if (this.$parsedUpvotedIdea['ideaQuality'] == "plausible") {
+	// 	this.$parsedUpvotedIdea['ideaQuality'] == "genius";
+	// }
+};	
