@@ -9,8 +9,6 @@ saveIdeaButton.addEventListener('click', saveIdea);
 function IdeaCard (ideaTitle, ideaBody, ideaId) {
 	this.ideaTitle = ideaTitle,
 	this.ideaBody = ideaBody,
-	// this.ideaQuality = ideaQuality || 'swill',
-	//this.ideaId = Date.now();
 	this.ideaId = ideaId;
 };
 
@@ -22,38 +20,30 @@ function saveIdea () {
 	var $newIdea = new IdeaCard($ideaTitle, $ideaBody, $ideaId);
 	var $stringifiedIdea = JSON.stringify($newIdea);
 	localStorage.setItem($ideaId, $stringifiedIdea);
-	displayIdea($ideaId);
+	retrieveIdea($ideaId);
 	
 };
 
-function displayIdea(e) {
+function retrieveIdea(e) {
 	var retrievedIdea = localStorage.getItem(e);
 	var parsedIdea = JSON.parse(retrievedIdea);
-	appendIdeaCard(parsedIdea.ideaTitle, parsedIdea.ideaBody, parsedIdea.ideaId);
+	displayIdeaCard(parsedIdea.ideaTitle, parsedIdea.ideaBody, parsedIdea.ideaId);
 };
 
 window.onload = function() {
 	for(var i in localStorage)
 	{
-    displayIdea(i);
+    retrieveIdea(i);
 	}
-	//var parsedArray = JSON.parse(localStorage);
-	//console.log(parsedArray);
 };
 
-// function showIdea () {
-// 	var retrievedIdea = localStorage.getItem(Date.now());
-// 	var parsedIdea = JSON.parse(retrievedIdea);
-// 	console.log(parsedIdea);
-// }
-
-function appendIdeaCard (ideaTitle, ideaBody, ideaId) {
+function displayIdeaCard (ideaTitle, ideaBody, ideaId) {
 	var ideaWrapper = document.querySelector('.idea-wrapper');	
 	var ideaCard = document.createElement('article');
 	ideaCard.classList.add('idea-card');
 	ideaCard.id = ideaId;
 	ideaCard.innerHTML = 
-		`<h2 class="idea-title-h2"> ${ideaTitle} <button type="button" class="idea-delete"></button></h2>
+		`<h2 class="idea-title-h2"> ${ideaTitle} </h2><button type="button" class="idea-delete"></button></h2>
 		<p class="idea-body-text"> ${ideaBody} </p>
 		<button class="upvote voting-buttons" type="button"></button>
 		<button class="downvote voting-buttons" type="button"></button>
@@ -62,9 +52,12 @@ function appendIdeaCard (ideaTitle, ideaBody, ideaId) {
 	document.querySelector('form').reset();
 }
 
-//Delete Idea
+//Delete Idea from DOM
 $(document).on('click', function(){
 	$('.idea-delete').click(function() {
 	$(this).closest('article').remove();
+	//Delete idea from localStorage
+	var $ideaToBeRemoved = $(this).closest('article').attr('id');
+	localStorage.removeItem($ideaToBeRemoved);
 	});
 });
