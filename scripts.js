@@ -68,16 +68,23 @@ $(document).on('click', function(){
 $(document).on('click', upVote);
 
 function upVote () {
+	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
 	$('.upvote').click(function() {
 		var $upvotedIdea = $(this).closest('article').attr('id');
 		var $retrievedUpVotedIdea = localStorage.getItem($upvotedIdea);
 		var $parsedUpvotedIdea = JSON.parse($retrievedUpVotedIdea);
-		console.log($parsedUpvotedIdea.ideaQuality);
-	})
+		
+		if($parsedUpvotedIdea['ideaQuality'] == "swill"){
+			console.log($parsedUpvotedIdea.ideaQuality + ' cl 1')
+			$parsedUpvotedIdea['ideaQuality'] == "plausible";
+		} else if ($parsedUpvotedIdea['ideaQuality'] == "plausible") {
+			console.log($parsedUpvotedIdea.ideaQuality + ' cl 2')
+			$parsedUpvotedIdea['ideaQuality'] == "genius";
+		}
+		
 
-	// if(this.$parsedUpvotedIdea['ideaQuality'] == "swill"){
-	// 	this.$parsedUpvotedIdea['ideaQuality'] == "plausible";
-	// } else if (this.$parsedUpvotedIdea['ideaQuality'] == "plausible") {
-	// 	this.$parsedUpvotedIdea['ideaQuality'] == "genius";
-	// }
+
+	});
+	//If Conditional to change ideaQuality value of the object
+	
 };	
