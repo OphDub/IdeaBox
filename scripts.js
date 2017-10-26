@@ -7,7 +7,7 @@ saveIdeaButton.addEventListener('click', saveIdea);
 $('.idea-wrapper').on('click', voteDirection);
 
 //Functions
-//Idea Card Persistence Function
+//Idea Card Persistence
 window.onload = function() {
 	for(var i in localStorage)
 	{
@@ -50,24 +50,13 @@ function saveTitle (id, ideaTitle) {
 	localStorage.setItem(id, stringTitle);
 };
 
-
-
 function retrieveIdea(e) {
 	var retrievedIdea = localStorage.getItem(e);
 	var parsedIdea = JSON.parse(retrievedIdea);
 	displayIdeaCard(parsedIdea['ideaTitle'], parsedIdea['ideaBody'], parsedIdea['ideaId'], parsedIdea['ideaQuality']);
 };
 
-
-window.onload = function() {
-	for(var i in localStorage)
-	{
-    retrieveIdea(i);
-	}
-};
-
-//Change text on inputs
-
+//Edit text for Idea Card Title Text
 $('.idea-wrapper').on('click', '.idea-title', function() {
     $(this).attr('contenteditable','true').addClass('edit-title').focus();
     var $editThis = $(this).closest('article').attr('id');
@@ -82,6 +71,7 @@ $('.idea-wrapper').on('click', '.idea-title', function() {
 		});
 });
 
+//Edit text for Idea Card Body Text
 $('.idea-wrapper').on('click', '.idea-body-text', function() {
     $(this).attr('contenteditable','true').addClass('edit-body').focus();
     var editThis = $(this).closest('article').attr('id');
@@ -95,9 +85,8 @@ $('.idea-wrapper').on('click', '.idea-body-text', function() {
 		});
 });
 
-//Change text on inputs
-
-function displayIdeaCard (ideaTitle, ideaBody, ideaId) {
+//Push IdeaCard to DOM
+function displayIdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
 	var ideaWrapper = document.querySelector('.idea-wrapper');	
 	var ideaCard = document.createElement('article');
 	ideaCard.classList.add('idea-card');
