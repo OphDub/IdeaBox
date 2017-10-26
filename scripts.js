@@ -68,42 +68,50 @@ $(document).on('click', function(){
 
 //Voting Function
 $('.idea-wrapper').on('click', '.upvote', function() {
-	var $votedIdeaId = $(this).closest('article').attr('id');
-	var $votedIdeaQuality = $(this).closest('span.idea-status').text();
-	console.log($votedIdeaQuality);
+	var $voteId = $(this).closest('article').attr('id');
+	var qualityStatus = $(this).closest('article').find('.idea-status').text();
+	
 
-	$('.idea-wrapper').click(function() {
-		//Upvote Conditional
-		if($(this).hasClass('.upvote')) {
-			if ($votedIdeaQuality === "swill") {
-				$votedIdeaQuality = "plausible";
-				saveQuality($votedIdeaId, $votedIdeaQuality);
-			} else if($votedIdeaQuality === "plausible") {
-				$votedIdeaQuality = "genius";
-				saveQuality($votedIdeaId, $votedIdeaQuality);
+
+		if($(this).closest('.upvote')) {
+			if (qualityStatus === "swill") {
+				qualityStatus = "plausible";
+				saveQuality($voteId, qualityStatus);
+				return;
+			} else if(qualityStatus === "plausible") {
+				qualityStatus = "genius";
+				saveQuality($voteId, qualityStatus);
+				return;
 			}
 		//Downvote Conditional
-		} else if($(this).hasClass('.downvote')) {
-			if($votedIdeaQuality === "genius") {
-				$votedIdeaQuality = "plausible";
-				saveQuality($votedIdeaId, $votedIdeaQuality);
-			} else if ($votedIdeaQuality === "plausible") {
-				$votedIdeaQuality = "swill";
-				saveQuality($votedIdeaId, $votedIdeaQuality);
+		} else if($(this).closest('.downvote')) {
+			if(qualityStatus === "genius") {
+				qualityStatus = "plausible";
+				saveQuality($voteId, qualityStatus);
+				return;
+			} else if (qualityStatus === "plausible") {
+				qualityStatus = "swill";
+				saveQuality($voteId, qualityStatus);
+				return;
 			}
 		}
-	})
 
-	$(this).closest('article').find('.idea-status').text($votedIdeaQuality);
-	saveQuality($votedIdeaId, $votedIdeaQuality);
+	//$(this).closest('article').find('.idea-status').text($votedIdeaQuality);
+	
 });
 
 function saveQuality (id, ideaQuality) {
+		
     var retrieved = localStorage.getItem(id);
+   
     var parsed = JSON.parse(retrieved);
+   
     parsed.ideaQuality = ideaQuality;
+    
     var stringQuality = JSON.stringify(parsed);
+    
     localStorage.setItem(id, stringQuality);
+    
 };
 
 
