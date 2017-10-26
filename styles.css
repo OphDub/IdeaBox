@@ -162,6 +162,10 @@ p {
   background-color: #045e55;
 }
 
+.save-button.disabled{
+  background-color: grey;
+}
+
 #idea-search {
   position: absolute;
   top: 15px;
