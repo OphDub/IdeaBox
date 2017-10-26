@@ -4,8 +4,8 @@ var deleteIdea = document.querySelector('.idea-delete');
 
 //Event Listeners
 saveIdeaButton.addEventListener('click', saveIdea);
-$('.idea-wrapper').on('click', downVote);
-$('.idea-wrapper').on('click', upVote);
+// $('.idea-wrapper').on('click', downVote);
+// $('.idea-wrapper').on('click', upVote);
 
 //Functions
 //Idea Card Persistence Function
@@ -66,46 +66,85 @@ $(document).on('click', function(){
 	});
 });	
 
-//Upvote Function
-function upVote () {
-	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
-	$('.upvote').click(function() {
-		var $upvotedIdea = $(this).closest('article').attr('id');
-		var $retrievedUpvotedIdea = localStorage.getItem($upvotedIdea);
-		var $parsedUpvotedIdea = JSON.parse($retrievedUpvotedIdea);
-	//Change idea quality of card
-		if ($parsedUpvotedIdea['ideaQuality'] === "swill") {
-			$parsedUpvotedIdea['ideaQuality'] = "plausible";
-		} else if($parsedUpvotedIdea['ideaQuality'] === "plausible") {
-			$parsedUpvotedIdea['ideaQuality'] = "genius";
-			console.log($parsedUpvotedIdea['ideaQuality']);
-		};
-	//Stringify changed ideaCard and setItem again in localStorage
-		$(this).closest('article').find('.idea-status').text($parsedUpvotedIdea['ideaQuality']);
-		var $changedIdea = JSON.stringify($parsedUpvotedIdea);
-		localStorage.setItem($upvotedIdea, $changedIdea);
-	})
-};	
+//Voting Function
+$('.idea-wrapper').on('click', '.upvote', function() {
+	var $votedIdeaId = $(this).closest('article').attr('id');
+	var $votedIdeaQuality = $('span.idea-status').text();
+	console.log($votedIdeaQuality);
 
-//Downvote Function
-function downVote () {
-	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
-	$('.downvote').click(function() {
-		var $downvotedIdea = $(this).closest('article').attr('id');
-		var $retrievedDownvotedIdea = localStorage.getItem($downvotedIdea);
-		var $parsedDownvotedIdea = JSON.parse($retrievedDownvotedIdea);
-	//Change idea quality of card	
-		if($parsedDownvotedIdea['ideaQuality'] === "genius") {
-			$parsedDownvotedIdea['ideaQuality'] = "plausible";
-		} else if ($parsedDownvotedIdea['ideaQuality'] === "plausible") {
-			$parsedDownvotedIdea['ideaQuality'] = "swill";
-			console.log($parsedDownvotedIdea['ideaQuality']);
-		} else if ($parsedDownvotedIdea['ideaQuality'] === "swill") {
-			$parsedDownvotedIdea['ideaQuality'] = "swill";
-		};
-	//Stringify changed ideaCard and setItem again in localStorage	
-		$(this).closest('article').find('.idea-status').text($parsedDownvotedIdea['ideaQuality']);
-		var $changedIdea = JSON.stringify($parsedDownvotedIdea);
-		localStorage.setItem($downvotedIdea, $changedIdea);
+	$('.idea-wrapper').click(function() {
+		//Upvote Conditional
+		if($(this).hasClass('.upvote')) {
+			if ($votedIdeaQuality === "swill") {
+				$votedIdeaQuality = "plausible";
+				saveQuality($votedIdeaId, $votedIdeaQuality);
+			} else if($votedIdeaQuality === "plausible") {
+				$votedIdeaQuality = "genius";
+				saveQuality($votedIdeaId, $votedIdeaQuality);
+			}
+		//Downvote Conditional
+		} else if($(this).hasClass('.downvote')) {
+			if($votedIdeaQuality === "genius") {
+				$votedIdeaQuality = "plausible";
+				saveQuality($votedIdeaId, $votedIdeaQuality);
+			} else if ($votedIdeaQuality === "plausible") {
+				$votedIdeaQuality = "swill";
+				saveQuality($votedIdeaId, $votedIdeaQuality);
+			}
+		}
 	})
+
+	$(this).closest('article').find('.idea-status').text($votedIdeaQuality);
+	saveQuality($votedIdeaId, $votedIdeaQuality);
+});
+
+function saveQuality (id, ideaQuality) {
+    var retrieved = localStorage.getItem(id);
+    var parsed = JSON.parse(retrieved);
+    parsed.ideaQuality = ideaQuality;
+    var stringQuality = JSON.stringify(parsed);
+    localStorage.setItem(id, stringQuality);
 };
+
+
+// //Upvote Function
+// function upVote () {
+// 	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
+// 	$('.upvote').click(function() {
+// 		var $upvotedIdea = $(this).closest('article').attr('id');
+// 		var $retrievedUpvotedIdea = localStorage.getItem($upvotedIdea);
+// 		var $parsedUpvotedIdea = JSON.parse($retrievedUpvotedIdea);
+// 	//Change idea quality of card
+// 		if ($parsedUpvotedIdea['ideaQuality'] === "swill") {
+// 			$parsedUpvotedIdea['ideaQuality'] = "plausible";
+// 		} else if($parsedUpvotedIdea['ideaQuality'] === "plausible") {
+// 			$parsedUpvotedIdea['ideaQuality'] = "genius";
+// 			console.log($parsedUpvotedIdea['ideaQuality']);
+// 		};
+// 	//Stringify changed ideaCard and setItem again in localStorage
+// 		$(this).closest('article').find('.idea-status').text($parsedUpvotedIdea['ideaQuality']);
+// 		var $changedIdea = JSON.stringify($parsedUpvotedIdea);
+// 		localStorage.setItem($upvotedIdea, $changedIdea);
+// 	})
+// };	
+
+// //Downvote Function
+// function downVote () {
+// 	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
+// 	$('.downvote').click(function() {
+// 		var $downvotedIdea = $(this).closest('article').attr('id');
+// 		var $retrievedDownvotedIdea = localStorage.getItem($downvotedIdea);
+// 		var $parsedDownvotedIdea = JSON.parse($retrievedDownvotedIdea);
+// 	//Change idea quality of card	
+// 		if($parsedDownvotedIdea['ideaQuality'] === "genius") {
+// 			$parsedDownvotedIdea['ideaQuality'] = "plausible";
+// 		} else if ($parsedDownvotedIdea['ideaQuality'] === "plausible") {
+// 			$parsedDownvotedIdea['ideaQuality'] = "swill";
+// 			console.log($parsedDownvotedIdea['ideaQuality']);
+// 		};
+// 	//Stringify changed ideaCard and setItem again in localStorage	
+// 		$(this).closest('article').find('.idea-status').text($parsedDownvotedIdea['ideaQuality']);
+// 		var $changedIdea = JSON.stringify($parsedDownvotedIdea);
+// 		localStorage.setItem($downvotedIdea, $changedIdea);
+// 	})
+// };
