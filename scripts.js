@@ -89,8 +89,7 @@ $('.idea-wrapper').on('click', '.idea-body-text', function() {
 		});
 });
 
-//Change text on inputs
-
+//Push IdeaCard to DOM
 function displayIdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
 	var ideaWrapper = document.querySelector('.idea-wrapper');	
 	var ideaCard = document.createElement('article');
