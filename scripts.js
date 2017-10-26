@@ -1,19 +1,20 @@
 //Global Variables
 var saveIdeaButton = document.querySelector('.save-button');
 var deleteIdea = document.querySelector('.idea-delete');
-
+var titleEntry = document.querySelector('title-input');
 //Event Listeners
 saveIdeaButton.addEventListener('click', saveIdea);
+
+$('#ideaForm').submit(function(refstop) {
+    refstop.preventDefault();
+});
+
 $('.idea-wrapper').on('click', voteDirection);
+
+
 
 //Functions
 //Idea Card Persistence Function
-window.onload = function() {
-	for(var i in localStorage)
-	{
-    retrieveIdea(i);
-	}
-};
 
 function IdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
 	this.ideaTitle = ideaTitle,

@@ -12,23 +12,11 @@ body {
   height: 100%;
   font-size: 16px;
   overflow: hidden;
-}
-
-/*Global Styles */
-
-/*Font-Styles*/
-body {
   font-family: Roboto Slab;
   position: relative;
 }
 
-p {
-  font-family: Open Sans;
-  font-size: 0.938em;
-  color: #939598;
-  line-height: 17px;
-  margin-bottom: 13px;
-}
+/*Global Styles */
 
 header h1{
   font-size: 1.5em;
@@ -45,6 +33,7 @@ header h1{
 .user-input,
 #idea-search  {
   font-family: Open Sans;
+  border:1px solid #D1D2D4;
 }
 
 .idea-title {
@@ -85,8 +74,9 @@ header form {
   margin: auto;
 }
 
-/*Header Styles*/
+/* Header Styles */
 
+/* Card styles */
 .idea-wrapper {
   display: flex;
   flex-direction: column;
@@ -95,7 +85,6 @@ header form {
   padding: 72px 15px 15px;
   overflow-y: auto;
   height: 72%;
-
 }
 
 ::-webkit-scrollbar {
@@ -109,11 +98,12 @@ header form {
   width: 100%;
 }
 
-.edit-title{
+h2.edit-title{
   background: #eee;
   padding: 4px;
   border: 1px solid #000;
   z-index: 2;
+  color: #000;
 }
 
 .title-input {
@@ -141,11 +131,20 @@ header form {
   color:#BDBEC0;
 }
 
-.edit-body {
+p.edit-body {
   background: #eee;
   padding: 4px;
   border: 1px solid #000;
   z-index: 2;
+  color: #000;
+}
+
+p {
+  font-family: Open Sans;
+  font-size: 0.938em;
+  color: #939598;
+  line-height: 17px;
+  margin-bottom: 13px;
 }
 
 .save-button {
@@ -242,11 +241,10 @@ header form {
   background:url(images/downvote-hover.svg) no-repeat;
 }
 
-
-@media screen and (max-width : 320px) {
+@media screen and (max-width : 319px) {
     
     header {
-      height: 33%;
+      height: 40%;
     }
 
   header h1{
@@ -269,8 +267,6 @@ header form {
     min-width: 205px;
     padding: 6px;
   }
-
-
 }
 
 @media screen and (max-width : 380px) {
@@ -278,7 +274,6 @@ header form {
     width: 90%;
     left: 5%;
   }
-
 }
 
 @media screen and (min-width : 450px) {
