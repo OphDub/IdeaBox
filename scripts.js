@@ -13,13 +13,11 @@ saveIdeaButton.addEventListener('click', function() {
 		$(saveIdeaButton).removeClass('disabled').text('save');
 		saveIdea();
 	};
-	
 });
 
 $('#ideaForm').submit(function(refstop) {
     refstop.preventDefault();
 });
-
 $('.idea-wrapper').on('click', voteDirection);
 $("#idea-search").keyup(Search);
 
@@ -153,7 +151,6 @@ function upVote (e) {
 	$(e).closest('article').find('.idea-status').text($parsedUpvotedIdea['ideaQuality']);
 	var $changedIdea = JSON.stringify($parsedUpvotedIdea);
 	localStorage.setItem($upvotedIdea, $changedIdea);
-
 };	
 
 //Downvote
