@@ -5,9 +5,9 @@ Our project spec as assigned was to create an webpage that is able to accept use
 ## Project Requirements
 
 Data Model for idea cards:
-  *An Idea has an id, title, a body, and a quality.*
-  *The id should be a unique identifier.*
-  *title and body are free-form strings.*
+  *An Idea has an id, title, a body, and a quality.
+  *The id should be a unique identifier.
+  *title and body are free-form strings.
   *quality should be one of the following: “genius”, “plausible”, and “swill.”*
   *By default, the idea’s “quality” should default to the lowest setting (i.e. “swill”).*
 
