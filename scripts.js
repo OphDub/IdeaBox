@@ -10,6 +10,7 @@ $('#ideaForm').submit(function(refstop) {
 });
 
 $('.idea-wrapper').on('click', voteDirection);
+$("#idea-search").keyup(Search);
 
 //Idea Card Persistence
 window.onload = function() {
@@ -160,4 +161,15 @@ function downVote (e) {
 	$(e).closest('article').find('.idea-status').text($parsedDownvotedIdea['ideaQuality']);
 	var $changedIdea = JSON.stringify($parsedDownvotedIdea);
 	localStorage.setItem($downvotedIdea, $changedIdea);
+};
+
+//Search
+function Search () {
+	var userSearchText = $(this).val();
+	$(".idea-wrapper .idea-title").each(function(){
+		if ($(this).text().toUpperCase().includes(userSearchText.toUpperCase())) {
+			$(this).closest('article').show();
+		} else
+			$(this).closest('article').hide(); 
+	})
 };
