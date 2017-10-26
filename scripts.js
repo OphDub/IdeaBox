@@ -69,7 +69,7 @@ $(document).on('click', function(){
 //Voting Function
 $('.idea-wrapper').on('click', '.upvote', function() {
 	var $votedIdeaId = $(this).closest('article').attr('id');
-	var $votedIdeaQuality = $('span.idea-status').text();
+	var $votedIdeaQuality = $(this).closest('span.idea-status').text();
 	console.log($votedIdeaQuality);
 
 	$('.idea-wrapper').click(function() {
