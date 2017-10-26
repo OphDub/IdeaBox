@@ -9,10 +9,10 @@ html{
 }
 
 body {
-  height: 100%;
-  font-size: 16px;
-  overflow: hidden;
   font-family: Roboto Slab;
+  font-size: 16px;
+  height: 100%;
+  overflow: hidden;
   position: relative;
 }
 
@@ -50,12 +50,12 @@ header h1{
 /*Header Styles*/
 
 header {
-  vertical-align: top;
-	background-color: #E2F5F5;
-  padding: 12px 15px 20px 15px;
+  background-color: #E2F5F5;
   display: block;
   height: 28%;
   min-height: 205px;
+  padding: 12px 15px 20px 15px;
+  vertical-align: top;
 }
 
 header h1{
@@ -78,13 +78,13 @@ header form {
 
 /* Card styles */
 .idea-wrapper {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 72px 15px 15px;
-  overflow-y: auto;
   height: 72%;
+  overflow-y: auto;
+  padding: 72px 15px 15px;
+  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -93,35 +93,35 @@ header form {
 }
 
 .idea-title {
-  position: relative;
   margin-bottom: 12px;
+  position: relative;
   width: 100%;
 }
 
 h2.edit-title{
   background: #eee;
-  padding: 4px;
   border: 1px solid #000;
-  z-index: 2;
   color: #000;
+  padding: 4px;
+  z-index: 2;
 }
 
 .title-input {
-  display: block;
-	padding: 3px 0 2px 6px;
-  margin-bottom: 11px;
+  padding: 3px 0 2px 6px;
   border:1px solid #D1D2D4;
+  display: block;
+  margin-bottom: 11px;
   width: 100%;
 }
 
 .input-body {
+  border:1px solid #D1D2D4;
   display: block;
   height: 64px;
-  padding: 4px 0 0 6px;
-  resize: none;
   margin-bottom: 13px;
   overflow: hidden;
-  border:1px solid #D1D2D4;
+  padding: 4px 0 0 6px;
+  resize: none;
   width: 100%;
 }
 
@@ -133,29 +133,29 @@ h2.edit-title{
 
 p.edit-body {
   background: #eee;
-  padding: 4px;
   border: 1px solid #000;
-  z-index: 2;
   color: #000;
+  padding: 4px;
+  z-index: 2;
 }
 
 p {
+  color: #939598;
   font-family: Open Sans;
   font-size: 0.938em;
-  color: #939598;
   line-height: 17px;
   margin-bottom: 13px;
 }
 
 .save-button {
-  display: block;
-	background-color: #00A79D;
-	color: #FFFFFF;
+  background-color: #00A79D;
+  color: #FFFFFF;
   border: none;
-  width: 100%;
+  cursor: pointer;
+  display: block;
   min-width: 273px;
   padding: 5px;
-  cursor: pointer;
+  width: 100%;
 }
 
 .save-button:hover{
@@ -167,21 +167,21 @@ p {
 }
 
 #idea-search {
+  max-width: 350px;
+  min-width: 205px;
+  padding: 0 7px;
   position: absolute;
   top: 15px;
-  padding: 0 7px;
-  min-width: 205px;
-  max-width: 350px;
   width: 100%;
 }
 
 .idea-card {
-  position: relative;
   border-bottom: 1px solid #d1d3d4;
-  padding-bottom: 10px;
   margin: 0 0 20px 0;
-  min-width: 205px;
   max-width: 350px;
+  min-width: 205px;
+  padding-bottom: 10px;
+  position: relative;
   width: 100%;
 }
 
@@ -191,16 +191,16 @@ p {
 }
 
 .idea-delete {
-  background:url(images/delete.svg) no-repeat;
   background-size: 20px;
-  cursor:pointer;
-  width: 20px;
-  height: 20px;
+  background:url(images/delete.svg) no-repeat;
   border: none;
+  cursor:pointer;
+  height: 20px;
+  padding: 0;
   position: absolute;
   right: 5px;
-  padding: 0;
   top:2px;
+  width: 20px;
 }
 
 .idea-delete:hover{
@@ -208,27 +208,27 @@ p {
 }
 
 .idea-quality {
-  display: inline;
-  position: absolute;
   bottom: 14px;
+  color: #6D6E71;
+  display: inline;
   left: 60px;
   margin: 0;
-  color: #6D6E71;
+  position: absolute;
 }
 
 .voting-buttons {
-  width: 20px;
-  height: 20px;
+  border: none;
   cursor:pointer;
   display: inline-block;
+  height: 20px;
   margin: 0;
   padding: 0;
-  border: none;
+  width: 20px;
 }
 
 .upvote {
-  background:url(images/upvote.svg) no-repeat;
   background-size: 20px;
+  background:url(images/upvote.svg) no-repeat;
   margin-right: 4px;
 }
 
@@ -257,13 +257,13 @@ p {
   }
 
   .title-input {
-    padding: 3px 0 3px 6px;
     min-width: 206px;
+    padding: 3px 0 3px 6px;
   }
 
   .input-body {
-    min-width: 206px;
     height: 69px;
+    min-width: 206px;
     padding: 3px 0 0 6px;
   }
 
@@ -275,8 +275,8 @@ p {
 
 @media screen and (max-width : 380px) {
   #idea-search{
-    width: 90%;
     left: 5%;
+    width: 90%;
   }
 }
 
