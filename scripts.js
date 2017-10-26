@@ -1,12 +1,16 @@
 //Global Variables
 var saveIdeaButton = document.querySelector('.save-button');
 var deleteIdea = document.querySelector('.idea-delete');
-
+var titleEntry = document.querySelector('title-input');
 //Event Listeners
 saveIdeaButton.addEventListener('click', saveIdea);
+
+$('#ideaForm').submit(function(refstop) {
+    refstop.preventDefault();
+});
+
 $('.idea-wrapper').on('click', voteDirection);
 
-//Functions
 //Idea Card Persistence
 window.onload = function() {
 	for(var i in localStorage)
@@ -92,12 +96,12 @@ function displayIdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
 	ideaCard.classList.add('idea-card');
 	ideaCard.id = ideaId;
 	ideaCard.innerHTML = 
-		`<h2 class="idea-title"> ${ideaTitle} </h2>
-		<button type="button" class="idea-delete"></button>
-		<p class="idea-body-text"> ${ideaBody} </p>
-		<button class="upvote voting-buttons" type="button"></button>
-		<button class="downvote voting-buttons" type="button"></button>
-		<p class="idea-quality"> quality: <span class="idea-status">${ideaQuality}</span></p>`
+		`<h2 tabindex="6" aria-label="Select this title to edit your idea." class="idea-title"> ${ideaTitle} </h2>
+		<p tabindex="6" aria-label="Idea Content. select this text to edit your idea." class="idea-body-text"> ${ideaBody} </p>
+		<p tabindex="6" aria-role="Idea Rating" class="idea-quality"> quality: <span class="idea-status">${ideaQuality}</span></p>
+		<button tabindex="6" aria-label="Upvote this idea" class="upvote voting-buttons" type="button"></button>
+		<button tabindex="6" aria-label="Downvote this idea" class="downvote voting-buttons" type="button"></button>
+		<button tabindex="6" aria-label="Delete this idea" type="button" class="idea-delete"></button>`
 	ideaWrapper.prepend(ideaCard);
 	document.querySelector('form').reset();
 }
