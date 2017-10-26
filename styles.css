@@ -66,7 +66,7 @@ header {
   padding: 12px 15px 20px 15px;
   display: block;
   height: 28%;
-  min-height: 180px;
+  min-height: 205px;
 }
 
 header h1{
@@ -92,9 +92,10 @@ header form {
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 45px  0 15px;
+  padding: 72px 15px 15px;
   overflow-y: auto;
   height: 72%;
+
 }
 
 ::-webkit-scrollbar {
@@ -105,6 +106,7 @@ header form {
 .idea-title {
   position: relative;
   margin-bottom: 12px;
+  width: 100%;
 }
 
 .edit-title{
@@ -117,23 +119,26 @@ header form {
 .title-input {
   display: block;
 	padding: 3px 0 2px 6px;
-  width: 100%;
-  min-width: 273px;
-  max-width: 350px;
   margin-bottom: 11px;
-  border:1px solid #d1d3d4;
+  border:1px solid #D1D2D4;
+  width: 100%;
 }
 
 .input-body {
   display: block;
   height: 64px;
   padding: 4px 0 0 6px;
-  width: 100%;
-  min-width: 273px;
-  max-width: 350px;
   resize: none;
   margin-bottom: 13px;
   overflow: hidden;
+  border:1px solid #D1D2D4;
+  width: 100%;
+}
+
+.title-input::placeholder,
+.input-body::placeholder,
+#idea-search::placeholder{
+  color:#BDBEC0;
 }
 
 .edit-body {
@@ -151,13 +156,20 @@ header form {
   width: 100%;
   min-width: 273px;
   padding: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover{
+  background-color: #045e55;
 }
 
 #idea-search {
   position: absolute;
-  top: 10px;
-  width: 350px;
+  top: 15px;
   padding: 0 7px;
+  min-width: 205px;
+  max-width: 350px;
+  width: 100%;
 }
 
 .idea-card {
@@ -165,7 +177,14 @@ header form {
   border-bottom: 1px solid #d1d3d4;
   padding-bottom: 10px;
   margin: 0 0 20px 0;
-  width: 350px;
+  min-width: 205px;
+  max-width: 350px;
+  width: 100%;
+}
+
+.idea-body-text{
+  color:#939598;
+  overflow-wrap: break-word;
 }
 
 .idea-delete {
@@ -191,6 +210,7 @@ header form {
   bottom: 14px;
   left: 60px;
   margin: 0;
+  color: #6D6E71;
 }
 
 .voting-buttons {
@@ -223,16 +243,43 @@ header form {
 }
 
 
-@media screen and (min-width : 320px) {
-
+@media screen and (max-width : 320px) {
+    
+    header {
+      height: 33%;
+    }
 
   header h1{
-    font-size: 8vw;
-    margin-bottom: 15px;
+    font-size: 1.5em;
+    margin: 12px 0 17px 0;
   }
+
+  .title-input {
+    padding: 3px 0 3px 6px;
+    min-width: 206px;
+  }
+
+  .input-body {
+    min-width: 206px;
+    height: 69px;
+    padding: 3px 0 0 6px;
+  }
+
+  .save-button{
+    min-width: 205px;
+    padding: 6px;
+  }
+
 
 }
 
+@media screen and (max-width : 380px) {
+  #idea-search{
+    width: 90%;
+    left: 5%;
+  }
+
+}
 
 @media screen and (min-width : 450px) {
 
