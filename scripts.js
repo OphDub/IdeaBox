@@ -34,19 +34,77 @@ function saveIdea () {
 	retrieveIdea($ideaId);
 };
 
+function saveBody (id, ideaBody) {
+	var retrieved = localStorage.getItem(id);
+	var parsed = JSON.parse(retrieved);
+	parsed.ideaBody = ideaBody;
+	var stringBody = JSON.stringify(parsed);
+	localStorage.setItem(id, stringBody);
+};
+
+function saveTitle (id, ideaTitle) {
+	var retrieved = localStorage.getItem(id);
+	var parsed = JSON.parse(retrieved);
+	parsed.ideaTitle = ideaTitle;
+	var stringTitle = JSON.stringify(parsed);
+	localStorage.setItem(id, stringTitle);
+};
+
+
+
 function retrieveIdea(e) {
 	var retrievedIdea = localStorage.getItem(e);
 	var parsedIdea = JSON.parse(retrievedIdea);
 	displayIdeaCard(parsedIdea['ideaTitle'], parsedIdea['ideaBody'], parsedIdea['ideaId'], parsedIdea['ideaQuality']);
 };
 
-function displayIdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
+
+window.onload = function() {
+	for(var i in localStorage)
+	{
+    retrieveIdea(i);
+	}
+};
+
+//Change text on inputs
+
+$('.idea-wrapper').on('click', '.idea-title', function() {
+    $(this).attr('contenteditable','true').addClass('edit-title').focus();
+    var $editThis = $(this).closest('article').attr('id');
+
+    $(this).keyup(function() {
+    	var $newTitle = $(this).text();
+    	saveTitle ($editThis, $newTitle);
+		});
+
+		$(this).on('blur', function(){
+				$(this).removeClass('edit-title');
+		});
+});
+
+$('.idea-wrapper').on('click', '.idea-body-text', function() {
+    $(this).attr('contenteditable','true').addClass('edit-body').focus();
+    var editThis = $(this).closest('article').attr('id');
+    $(this).keyup(function() {
+    	var newBody = $(this).text();
+    	saveBody(editThis, newBody);
+		});
+
+		$(this).on('blur', function(){
+				$(this).removeClass('edit-body');
+		});
+});
+
+//Change text on inputs
+
+function displayIdeaCard (ideaTitle, ideaBody, ideaId) {
 	var ideaWrapper = document.querySelector('.idea-wrapper');	
 	var ideaCard = document.createElement('article');
 	ideaCard.classList.add('idea-card');
 	ideaCard.id = ideaId;
 	ideaCard.innerHTML = 
-		`<h2 class="idea-title-h2"> ${ideaTitle} </h2><button type="button" class="idea-delete"></button></h2>
+		`<h2 class="idea-title"> ${ideaTitle} </h2>
+		<button type="button" class="idea-delete"></button>
 		<p class="idea-body-text"> ${ideaBody} </p>
 		<button class="upvote voting-buttons" type="button"></button>
 		<button class="downvote voting-buttons" type="button"></button>
@@ -90,6 +148,7 @@ function upVote (e) {
 	$(e).closest('article').find('.idea-status').text($parsedUpvotedIdea['ideaQuality']);
 	var $changedIdea = JSON.stringify($parsedUpvotedIdea);
 	localStorage.setItem($upvotedIdea, $changedIdea);
+
 };	
 
 //Downvote
