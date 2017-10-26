@@ -1,9 +1,20 @@
 //Global Variables
 var saveIdeaButton = document.querySelector('.save-button');
 var deleteIdea = document.querySelector('.idea-delete');
-var titleEntry = document.querySelector('title-input');
+
 //Event Listeners
-saveIdeaButton.addEventListener('click', saveIdea);
+saveIdeaButton.addEventListener('click', function() {
+	var titleEntry = $('.title-input').val();
+	var ideaEntry = $('.input-body').val();
+	if (titleEntry === '' || ideaEntry === ''){
+		$(saveIdeaButton).addClass('disabled').text('Enter Complete Idea');
+		return;
+	} else if(titleEntry !== '' || ideaEntry !== ''){
+		$(saveIdeaButton).removeClass('disabled').text('save');
+		saveIdea();
+	};
+	
+});
 
 $('#ideaForm').submit(function(refstop) {
     refstop.preventDefault();
