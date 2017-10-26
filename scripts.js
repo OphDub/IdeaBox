@@ -4,13 +4,23 @@ var deleteIdea = document.querySelector('.idea-delete');
 
 //Event Listeners
 saveIdeaButton.addEventListener('click', saveIdea);
+$('.idea-wrapper').on('click', downVote);
+$('.idea-wrapper').on('click', upVote);
 
 //Functions
+//Idea Card Persistence Function
+window.onload = function() {
+	for(var i in localStorage)
+	{
+    retrieveIdea(i);
+	}
+};
+
 function IdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
 	this.ideaTitle = ideaTitle,
 	this.ideaBody = ideaBody,
 	this.ideaId = ideaId;
-	this.ideaQuality = ideaQuality || "swill";
+	this.ideaQuality = ideaQuality;
 };
 
 //Save Idea to localStorage
@@ -18,7 +28,7 @@ function saveIdea () {
 	var $ideaTitle = $('#idea-title-input').val();
 	var $ideaBody = $('#idea-body').val();
 	var $ideaId = Date.now();
-	var $ideaQuality;
+	var $ideaQuality = 'swill';
 	var $newIdea = new IdeaCard($ideaTitle, $ideaBody, $ideaId, $ideaQuality);
 	var $stringifiedIdea = JSON.stringify($newIdea);
 	localStorage.setItem($ideaId, $stringifiedIdea);
@@ -28,14 +38,7 @@ function saveIdea () {
 function retrieveIdea(e) {
 	var retrievedIdea = localStorage.getItem(e);
 	var parsedIdea = JSON.parse(retrievedIdea);
-	displayIdeaCard(parsedIdea.ideaTitle, parsedIdea.ideaBody, parsedIdea.ideaId, parsedIdea.ideaQuality);
-};
-
-window.onload = function() {
-	for(var i in localStorage)
-	{
-    retrieveIdea(i);
-	}
+	displayIdeaCard(parsedIdea['ideaTitle'], parsedIdea['ideaBody'], parsedIdea['ideaId'], parsedIdea['ideaQuality']);
 };
 
 function displayIdeaCard (ideaTitle, ideaBody, ideaId, ideaQuality) {
@@ -64,9 +67,6 @@ $(document).on('click', function(){
 });	
 
 //Upvote Function
-
-$(document).on('click', upVote);
-
 function upVote () {
 	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
 	$('.upvote').click(function() {
@@ -74,42 +74,38 @@ function upVote () {
 		var $retrievedUpvotedIdea = localStorage.getItem($upvotedIdea);
 		var $parsedUpvotedIdea = JSON.parse($retrievedUpvotedIdea);
 	//Change idea quality of card
-		if ($parsedUpvotedIdea['ideaQuality'] === "plausible") {
-			$parsedUpvotedIdea['ideaQuality'] = "genius";
-		};
-
-		if($parsedUpvotedIdea['ideaQuality'] === "swill") {
+		if ($parsedUpvotedIdea['ideaQuality'] === "swill") {
 			$parsedUpvotedIdea['ideaQuality'] = "plausible";
+		} else if($parsedUpvotedIdea['ideaQuality'] === "plausible") {
+			$parsedUpvotedIdea['ideaQuality'] = "genius";
+			console.log($parsedUpvotedIdea['ideaQuality']);
 		};
 	//Stringify changed ideaCard and setItem again in localStorage
+		$(this).closest('article').find('.idea-status').text($parsedUpvotedIdea['ideaQuality']);
 		var $changedIdea = JSON.stringify($parsedUpvotedIdea);
 		localStorage.setItem($upvotedIdea, $changedIdea);
-
 	})
 };	
 
 //Downvote Function
-
-$(document).on('click', downVote);
-
 function downVote () {
+	//Event listener to retrieve correct ideaCard ID from localStorage and parse the object
 	$('.downvote').click(function() {
 		var $downvotedIdea = $(this).closest('article').attr('id');
 		var $retrievedDownvotedIdea = localStorage.getItem($downvotedIdea);
 		var $parsedDownvotedIdea = JSON.parse($retrievedDownvotedIdea);
-
-		if($parsedDownvotedIdea['ideaQuality'] === "plausible") {
-			$parsedDownvotedIdea['ideaQuality'] = "swill";
-			console.log($changedIdea);
-		};
-
+	//Change idea quality of card	
 		if($parsedDownvotedIdea['ideaQuality'] === "genius") {
 			$parsedDownvotedIdea['ideaQuality'] = "plausible";
-			console.log($changedIdea);
+		} else if ($parsedDownvotedIdea['ideaQuality'] === "plausible") {
+			$parsedDownvotedIdea['ideaQuality'] = "swill";
+			console.log($parsedDownvotedIdea['ideaQuality']);
+		} else if ($parsedDownvotedIdea['ideaQuality'] === "swill") {
+			$parsedDownvotedIdea['ideaQuality'] = "swill";
 		};
-	
+	//Stringify changed ideaCard and setItem again in localStorage	
+		$(this).closest('article').find('.idea-status').text($parsedDownvotedIdea['ideaQuality']);
 		var $changedIdea = JSON.stringify($parsedDownvotedIdea);
 		localStorage.setItem($downvotedIdea, $changedIdea);
-
 	})
 };
