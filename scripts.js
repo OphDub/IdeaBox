@@ -162,9 +162,8 @@ function downVote (e) {
 //Search
 function Search () {
 	var userSearchText = $(this).val();
-	$(".idea-wrapper .idea-title" || ".idea-wrapper .idea-body-text").each(function(){
+	$(".idea-wrapper .idea-title").each(function(){
 		if ($(this).text().toUpperCase().includes(userSearchText.toUpperCase())) {
-			console.log(this);
 			$(this).closest('article').show();
 		} else
 			$(this).closest('article').hide(); 
