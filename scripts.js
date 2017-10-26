@@ -5,6 +5,7 @@ var deleteIdea = document.querySelector('.idea-delete');
 //Event Listeners
 saveIdeaButton.addEventListener('click', saveIdea);
 $('.idea-wrapper').on('click', voteDirection);
+$("#idea-search").keyup(Search);
 
 //Functions
 //Idea Card Persistence
@@ -156,4 +157,16 @@ function downVote (e) {
 	$(e).closest('article').find('.idea-status').text($parsedDownvotedIdea['ideaQuality']);
 	var $changedIdea = JSON.stringify($parsedDownvotedIdea);
 	localStorage.setItem($downvotedIdea, $changedIdea);
+};
+
+//Search
+function Search () {
+	var userSearchText = $(this).val();
+	$(".idea-wrapper .idea-title" || ".idea-wrapper .idea-body-text").each(function(){
+		if ($(this).text().toUpperCase().includes(userSearchText.toUpperCase())) {
+			console.log(this);
+			$(this).closest('article').show();
+		} else
+			$(this).closest('article').hide(); 
+	})
 };
